@@ -33,9 +33,11 @@ public class CalculateFeeTest {
        CalculateFee calculateFee = mock(CalculateFee.class);
        when(calculateFee.calculateFee(car.getLicense_plate(), checkin.getCarsCheckin().get(car))).thenReturn(MOCK_FEE);
 
-       calculateFee.calculateFee(car.getLicense_plate(), checkin.getCarsCheckin().get(car));
+       double actual_fee = calculateFee.calculateFee(car.getLicense_plate(), checkin.getCarsCheckin().get(car));
 
         verify(calculateFee, times(1)).calculateFee(car.getLicense_plate(), checkin.getCarsCheckin().get(car));
+
+        assertEquals(MOCK_FEE, actual_fee, 0.01);
 
     }
 }
